@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <%-include('./layout/head.ejs')%>
+    </head>
+    <body>
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
+            <div class="container px-4 px-lg-5">
+                <a class="navbar-brand" href="index.html">Start Blog</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    Menu
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ms-auto py-4 py-lg-0">
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="/">Home</a></li>
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="/about">About</a></li>
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="/samplepost">Sample Post</a></li>
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="/contact">Contact</a></li>
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="/register">Register</a></li>
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="/login">Login</a></li>
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="/logout">Logout</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- Page Header-->
+        <header class="masthead" style="background-image: url('../upload/blog3.jpg')">
+            <div class="container position-relative px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <div class="post-heading" style="color: white;">
+                            <h1>Post Your Blog Here</h1>
+                            <h2 class="subheading">Your Contribution Might Help To Other Thousands.</h2>
+                            <span class="meta">
+                                Posted by
+                                <a href="#!">Start Blog</a>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- Post Content-->
+       
+        <div class="container">
+         <div >
+            <form action="/addsamplepost" method="post" enctype="multipart/form-data">
+                <div class="form-group">
+                  <label for="title">Post Title</label>
+                  <br/>
+                  <input type="" class="form-control" id="" name="title" placeholder="enter post title"/>
+                </div>
+                <br/>
+                <div class="form-group">
+                    <label for="subtitle">Post Subtitle</label>
+                    <br/>
+                    <input type="" class="form-control" id="" name="subtitle" placeholder="enter post subtitle"/>
+                  </div>
+                  <br/>
+                  <div class="form-group">
+                    <label for="txt">Enter About text:</label>
+                    <textarea class="form-control" name="editor1"></textarea>
+                    </div>
+                    <br/>
+                    <div class="form-group">
+                        <label for="image">Image:</label>
+                        <input type="file" class="form-control" name="image">
+                      </div>
+                     <br/>
+                     
+                  <a href="">
+                    <button type="submit" class="btn btn-primary" style="margin-bottom: 20px;">Submit</button>
+                  </a>
+                </form>
+         </div> 
+        </div>                   
+
+        <script src="https://cdn.ckeditor.com/4.16.2/standard/ckeditor.js"></script>
+ 
+        <script>
+            CKEDITOR.replace( 'editor1' );
+           //  for stop show the <p> and <br> tags in the about[view] page
+            CKEDITOR.config.enterMode = CKEDITOR.ENTER_BR;
+           
+           //  for stop show the nbsp or stop show blank space in  content table /the about[view] page
+           
+           </script>
+        <!-- Footer-->
+        <%-include('./layout/footer.ejs')%>
+    </body>
+</html>

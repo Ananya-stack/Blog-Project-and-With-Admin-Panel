@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js" integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="css/styles.css">
+    <title>Document</title>
+</head>
+<body>
+  <div >
+    <nav class="navbar navbar-expand-lg navbar-light bg-light" style="padding-top: 10px; background-image: url('../upload/www4.jpg');
+    background-size: cover;
+        background-attachment: scroll;
+     padding-bottom: 430px;">
+        <a class="navbar-brand" style="padding-left: 150px; font-weight: 800; color: white; 
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;" 
+        href="#">Start Blog</a>
+        
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav ml-auto">
+            <ul class="navbar-nav ms-auto py-4 py-lg-0" style="font-size: 0.75rem;font-weight: 800; 
+            letter-spacing: 0.0625em;font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">
+            <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" style="color: white;" href="/">HOME</a></li>
+            <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" style="color: white;" href="/about">ABOUT</a></li>
+            <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" style="color: white;" href="/samplepost">SAMPLE POST</a></li>
+            <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" style="color: white;" href="/contact">CONTACT</a></li>
+            <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" style="color: white;" href="/register">REGISTER</a></li>
+            <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" style="color: white;" href="/login">LOGIN</a></li>
+            <li class="nav-item" style="padding-right: 150px;"><a class="nav-link px-lg-3 py-3 py-lg-4" style="color: white;" href="/logout">LOGOUT</a></li>
+          </ul>
+          </div>
+        </div>
+      </nav>
+    </div>
+        <!-- Page Header-->
+        <header class="" style="position: absolute; top: 200px;
+        left: 0px;
+        right: 0;
+        bottom: 0; text-align: center;">
+            <div class="container position-relative px-4 px-lg-5 " >
+                      <% if(data) {%>
+                        <div class="site-heading" >
+                            <h2 style="color: black;  font-size: 40px; font-weight: 900;"><%- data.title %></h2>
+                            <span class="subheading" style="color: rgb(0 0 0); font-weight: 900; padding-top: 30px;">A Blog About <%- data.title %></span>
+                        </div>
+                        <% }%>
+            </div>
+        </header>
+        <!-- body part -->
+        <div class="container">
+          <div style="text-align: center; font-weight: bold; font-size: 30px; padding-top: 20px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+            <p style="color: rgb(95, 93, 93);">What is <%- data.title %> ?</p>
+          </div>
+          <div class="row" style="padding-bottom: 50px;">
+            <div class="col-lg-5" style="padding-top: 20px; text-align: center;">
+              <img src="../upload/frontend.jpg" alt="img" width="100%">
+            </div>
+            <div class="col-lg-1"></div>
+            <div class="col-lg-6" style="text-align: center; padding-top: 40px; color: blue;">
+              <p><%- data.post %></p>
+              <input type="button" value="For More Details" style="background-color: rgb(90, 85, 90);">
+            </div>
+          </div>
+          
+        </div>
+        <!-- footer -->
+        <%-include('./layout/footer.ejs')%>
+</body>
+</html>

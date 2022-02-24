@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <%-include('./layout/head.ejs')%>
+        <style>
+            .disabled{
+                pointer-events:none;
+                cursor: not-allowed;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
+            <div class="container px-4 px-lg-5">
+                <a class="navbar-brand" href="index.html">Start Blog</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    Menu
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ms-auto py-4 py-lg-0">
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="/">Home</a></li>
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="/about">About</a></li>
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="/samplepost">Sample Post</a></li>
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="/contact">Contact</a></li>
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="/register">Register</a></li>
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="/login">Login</a></li>
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="/logout">Logout</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- Page Header-->
+        <header class="masthead" style="background-image: url('../upload/tech.png'); padding-bottom: 100px;">
+            <div class="container position-relative px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <div class="site-heading">
+                            <h1>Blog Panel</h1>
+                            <span class="subheading">A Blog Theme by Start Blog</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        
+        <!-- Main Content-->
+        <div class="container px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div style="text-align: center;">
+                    <% if (message.length>0) {%> 
+                        <div class="alert alert-success" style="color: rgb(68, 25, 255);">
+                          <%= message %>
+                        </div>  
+                    <%}%>
+                </div>
+                <div class="col-md-10 col-lg-8 col-xl-7">
+                    
+                        <% if(data.docs && data.docs.length > 0) {%>
+                       
+                            <% for(let datas of data.docs){ %>
+                               <div >
+                                <a href="/post_details/<%- datas.slug %>">
+                                    <h2 class="post-title"><%- datas.title %></h2>
+                                 </a>
+                                    <h5 class="post-subtitle" style="font-weight: normal; font-family: Georgia, 'Times New Roman', Times, serif; font-size: 20px; color: rgb(83, 80, 80);"><%- datas.subtitle %></h5>
+                                    <!-- <h6 class="editor" style="margin: 0; font-weight: normal;"><%- data.post %></h6> -->
+                                    <p class="post-meta" style="font-size: small; padding: 0;">
+                                                 Posted by
+                                    <a href="#!">Start Blog</a>
+                                    <%- datas.posted_at %>
+                                    </p>
+                               </div>
+                             
+                            <!-- Divider-->
+                             <hr/>
+                        
+                        <%}}else{%>
+                            <h1>no data found</h1>
+                        <% } %>
+                        
+                    <!-- Pager-->
+                    <!-- <div class="d-flex justify-content-end mb-4"><a class="btn btn-primary text-uppercase" href="#!">Older Posts →</a></div> -->
+                
+                <!-- pagination -->
+                <div style="padding-left: 130px;">
+                <nav aria-label="...">
+ 
+                    <ul class="pagination">
+                        <li class="page-item"><a class="page-link <%= !data.hasPrevPage ? 'disabled' : '' %>" href="<%= data.prevPage ? `?page=${data.prevPage}` : '' %>">Previous</a></li>
+                        <% if(data.totalPages){ for(i=1; i<=data.totalPages; i++){ %>
+                        <li class="page-item <%= (pager == i) ? 'active' : '' %>"><a class="page-link" href="?page=<%= i %>"><%= i %></a></li>
+                        <% }} %>
+                       
+                        <li class="page-item"><a class="page-link <%= !data.hasNextPage ? 'disabled' : '' %>" href="<%= data.nextPage ? `?page=${data.nextPage}` : '' %>">Next</a></li>
+                      </ul>
+
+                    <!-- <ul class="pagination">
+                      <li class="page-item disabled">
+                        <span class="page-link">Previous</span>
+                      </li>
+                      <li class="page-item"><a class="page-link" href="#">1</a></li>
+                      <li class="page-item active">
+                        <span class="page-link">
+                          2
+                          <span class="sr-only">(current)</span>
+                        </span>
+                      </li>
+                      <li class="page-item"><a class="page-link" href="#">3</a></li>
+                      <li class="page-item">
+                        <a class="page-link" href="#">Next</a>
+                      </li>
+                    </ul> -->
+                  </nav>
+                </div>
+                
+                </div>
+            </div>
+        </div>
+        <!-- Footer-->
+        <%-include('./layout/footer.ejs')%>
+    </body>
+</html>
